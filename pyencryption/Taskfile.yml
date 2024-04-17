@@ -15,12 +15,12 @@ tasks:
 
   install:
     cmds:
-      - {{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/install.sql
+      - "{{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/install.sql"
 
   uninstall:
     cmds:
-      - {{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/uninstall.sql
+      - "{{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/uninstall.sql"
 
   test:
     cmds:
-      - {{.VSQL}} -w${APP_DB_PASSWORD} -f test.sql
+      - "{{.VSQL}} -w${APP_DB_PASSWORD} -f test.sql"
