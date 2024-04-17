@@ -1,0 +1,26 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  SDK: /opt/vertica/sdk
+  VSQL: vsql
+  SRC: src
+  DDL: ddl
+
+tasks:
+  default:
+    cmds:
+      - task --list-all
+
+  install:
+    cmds:
+      - {{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/install.sql
+
+  uninstall:
+    cmds:
+      - {{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/uninstall.sql
+
+  test:
+    cmds:
+      - {{.VSQL}} -w${APP_DB_PASSWORD} -f test.sql
