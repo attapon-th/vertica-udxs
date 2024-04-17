@@ -1,10 +1,8 @@
-# https://taskfile.dev
-
 version: "3"
 
 vars:
   SDK: /opt/vertica/sdk
-  VSQL: vsql
+  VSQL: "sudo /opt/vertica/bin/vsql -U dbadmin -w${APP_DB_PASSWORD}"
   SRC: src
   DDL: ddl
 
@@ -15,12 +13,12 @@ tasks:
 
   install:
     cmds:
-      - "{{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/install.sql"
+      - "{{.VSQL}} -f {{.DDL}}/install.sql"
 
   uninstall:
     cmds:
-      - "{{.VSQL}} -w${APP_DB_PASSWORD} -f {{.DDL}}/uninstall.sql"
+      - "{{.VSQL}} -f {{.DDL}}/uninstall.sql"
 
   test:
     cmds:
-      - "{{.VSQL}} -w${APP_DB_PASSWORD} -f test.sql"
+      - "{{.VSQL}} -f test.sql"
