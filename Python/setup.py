@@ -3,9 +3,9 @@ import os
 from setuptools import setup, find_packages
 
 
-__version__ = "0.0.2"
+__version__ = "0.1.0"
 setup(
-    name="pylib",
+    name="pyudx",
     version=__version__,
     author="attapon.th",
     maintainer="attapon.th",
@@ -13,6 +13,8 @@ setup(
     url="https://github.com/attapon-th/vertica-pylib",
     long_description="",
     long_description_content_type="text/markdown",
-    install_requires=["PyCryptodome"],
+    install_requires=[
+        "pycryptodome>=3.17.0",
+    ],
     packages=find_packages(),
 )
