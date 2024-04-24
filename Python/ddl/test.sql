@@ -1,13 +1,12 @@
 
 SELECT 'Test pyencrypt' title;
-DROP TABLE IF EXISTS test_pyencrypt;
-CREATE TEMP TABLE test_pyencrypt ON COMMIT PRESERVE ROWS AS
-SELECT CID, pyencrypt(p.CID , 'test-password') ecid, CCID FROM hdc_cmi.PERSON p LIMIT 10;
+SELECT 'test1' txt, pyencrypt('test1', 'test-password') cp;
+SELECT 'test2' txt, pyencrypt('test2', 'test-password') cp;
 
-SELECT * FROM test_pyencrypt;
+SELECT 'Test pydecrypt' title;
+SELECT 'test1' txt, pydecrypt('QvBb376Osh7U4741MPdV..M2Hk3H8=.SiU0LYdrECF6PrwuU0C7kQ==', 'test-password') d_text,  pydecrypt('QvBb376Osh7U4741MPdV..M2Hk3H8=.SiU0LYdrECF6PrwuU0C7kQ==', 'test-password') = 'test1' decrypt_is_success;
+SELECT 'test2' txt, pydecrypt('AQwerTwngJMQRzjnhoyC..nzoBYbw=.ZQ1jNTxfPCYfZNaysLi6yw==', 'test-password') d_text, pydecrypt('AQwerTwngJMQRzjnhoyC..nzoBYbw=.ZQ1jNTxfPCYfZNaysLi6yw==', 'test-password') = 'test2' decrypt_is_success;
 
-SELECT  pydecrypt(ecid, 'test-password') cid, ecid  FROM test_pyencrypt;
-DROP TABLE IF EXISTS test_pyencrvaypt;
 
 SELECT 'Test Base64 Encoding' title;
 select 'test-test-encode' ptxt,  vb64encode('test-test-encode') entext,  vb64decode(vb64encode('test-test-encode') ) detext;
