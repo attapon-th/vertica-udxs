@@ -21,4 +21,4 @@ tasks:
 
   test:
     cmds:
-      - "{{.VSQL}} -f {{.DDL}}test.sql"
+      - "{{.VSQL}} -f {{.DDL}}/test.sql"
