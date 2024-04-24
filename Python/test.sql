@@ -6,4 +6,4 @@ SELECT pyencrypt(p.CID , 'test-password') ecid FROM hdc_cmi.PERSON p  WHERE thai
 SELECT * FROM test_pyencrypt;
 
 SELECT  pydecrypt(ecid, 'test-password') FROM test_pyencrypt;
-DROP TABLE IF EXISTS test_pyencrypt;
+DROP TABLE IF EXISTS test_pyencrvaypt;

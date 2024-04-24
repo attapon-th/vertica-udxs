@@ -3,7 +3,7 @@ select version();
 
 \set libfile '\''`pwd`'/src/pyencryption.py\''
 
-\set depen '\'/home/dbadmin/pyenv/lib64/python3.11/site-packages\''
+\set depen '\'/home/dbadmin/pyenv/lib64/python3.11/site-packages/\''
 
 CREATE OR REPLACE LIBRARY pyencryption AS :libfile DEPENDS :depen LANGUAGE 'Python';
 
