@@ -24,11 +24,9 @@ def check_mod11(cid: str) -> bool:
         return False
     if len(cid) != 13 or not cid.isnumeric():  # ถ้า pid ไม่ใช่ 13 ให้คืนค่า False
         return False
-    cid0 = int(cid[0])
-    cid1 = int(cid[1])
-    if cid0 == 0:  # ตัวเลขหลักที่ 0 ของบัตรประชาชน ไม่มีค่าเป็น 0
+    if cid[0] == "0":  # ตัวเลขหลักที่ 0 ของบัตรประชาชน ไม่มีค่าเป็น 0
         return False
-    if cid1 == 0:  # ตัวเลขหลักที่ 1 ของบัตรประชาชน
+    if cid[1] == "0":  # ตัวเลขหลักที่ 1 ของบัตรประชาชน
         return False
 
     cid12: str = cid[0:12]  # ตัวเลขหลักที่ 1 - 12 ของบัตรประชาชน
@@ -63,12 +61,13 @@ def verify_thaicid(cid: str) -> int:
     if not isinstance(cid, str):
         cid = str(cid)
 
-    if len(cid) == 13 and check_mod11(cid):
-        return CID_THAI
-    if len(cid) == 13 and cid.isnumeric():
-        return CID_NUMBER
     if len(cid) == 13:
-        return CID_LENGTH13
+        if check_mod11(cid):
+            return CID_THAI
+        elif cid.isnumeric():
+            return CID_NUMBER
+        else:
+            return CID_LENGTH13
     return CID_NONE
 
 
