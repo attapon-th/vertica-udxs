@@ -13,6 +13,7 @@ tasks:
 
   install:
     cmds:
+      - pip install .
       - "{{.VSQL}} -f {{.DDL}}/install.sql"
 
   uninstall:
